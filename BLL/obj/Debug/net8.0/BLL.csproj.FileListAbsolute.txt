@@ -10,3 +10,4 @@ C:\Users\iman.zahid\Desktop\onlineBlogs\BLL\obj\Debug\net8.0\BLL.dll
 C:\Users\iman.zahid\Desktop\onlineBlogs\BLL\obj\Debug\net8.0\refint\BLL.dll
 C:\Users\iman.zahid\Desktop\onlineBlogs\BLL\obj\Debug\net8.0\BLL.pdb
 C:\Users\iman.zahid\Desktop\onlineBlogs\BLL\obj\Debug\net8.0\ref\BLL.dll
+C:\Users\iman.zahid\Desktop\onlineBlogs\BLL\obj\Debug\net8.0\BLL.sourcelink.json

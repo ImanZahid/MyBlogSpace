@@ -6,13 +6,47 @@
     <title>@ViewData["Title"] - MVC</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/MVC.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <style>
+            header {
+                background-color: #ff6f91 !important;
+            }
+
+            .navbar {
+                background-color: #ff6f91 !important;
+                padding: 10px;
+            }
+
+                .navbar .navbar-brand {
+                    color: #fff !important;
+                    font-size: 20px;
+                    font-weight: bold !important;
+                }
+
+                .navbar .nav-link {
+                    color: #ffe5e5 !important;
+                    font-size: 16px;
+                    font-weight: 500 !important;
+                }
+
+                    .navbar .nav-link:hover {
+                        color: #ffdde1 !important;
+                        text-decoration: underline !important;
+                    }
+
+            .navbar-toggler {
+                border-color: #ffe5e5 !important;
+            }
+
+            .navbar-toggler-icon {
+                background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffe5e5' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 0.7)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+            }
+        </style>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MVC</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MyBlogSpace</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -20,16 +54,16 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Blogs" asp-action="Index">Blogs</a>
+                            <a class="nav-link" asp-area="" asp-controller="Blogs" asp-action="Index">Blogs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
+                            <a class="nav-link" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
                         </li>
                     </ul>
                 </div>

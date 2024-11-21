@@ -152,7 +152,7 @@
                                 @(item.Rating.HasValue ? item.Rating.Value.ToString("F2", System.Globalization.CultureInfo.InvariantCulture) : "")
                             </td>
                             <td>
-                                @(item.PublishDate.ToString("MM/dd/yyyy"))
+                                @(item.PublishDate.ToString("dd.MM.yyyy"))
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.UserName)
