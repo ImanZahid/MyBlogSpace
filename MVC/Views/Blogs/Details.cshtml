@@ -1,0 +1,132 @@
+﻿@model BlogModels
+
+@{
+    var containerDivClass = "container";
+
+    ViewData["Title"] = "Blog Details";
+}
+
+<style>
+    body {
+        background-color: #fff8f8;
+        font-family: 'Poppins', sans-serif;
+        color: #333;
+    }
+
+    h1 {
+        color: #ff6f91;
+        font-family: 'Playfair Display', serif;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .fw-bold {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .text-danger {
+        color: #ff6f91 !important;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .row.mb-3 {
+        margin-bottom: 15px;
+    }
+
+    hr {
+        border: 1px solid #ffd1e1;
+    }
+
+    a {
+        color: #ff6f91;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    a:hover {
+        color: #ff5777;
+        text-decoration: underline;
+    }
+
+    .action-links a {
+        margin-right: 10px;
+    }
+</style>
+
+<div class="@containerDivClass">
+    <h1>@ViewData["Title"]</h1>
+    <hr />
+</div>
+
+@if (Model is not null)
+
+{
+    <div class="@containerDivClass">
+        @if (TempData["Message"] is not null)
+
+        {
+            <p class="text-danger">
+                @TempData["Message"]
+            </p>
+        }
+        <div class="row mb-3">
+            <div class="col-2 fw-bold">
+                @Html.DisplayNameFor(model => model.Title)
+            </div>
+            <div class="col-10">
+                @Html.DisplayFor(model => model.Title)
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-2 fw-bold">
+                @Html.DisplayNameFor(model => model.Content)
+            </div>
+            <div class="col-10">
+                @Html.DisplayFor(model => model.Content)
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-2 fw-bold">
+                @Html.DisplayNameFor(model => model.Rating)
+            </div>
+            <div class="col-10">
+                @(Model.Rating.HasValue ? Model.Rating.Value.ToString("F2", System.Globalization.CultureInfo.InvariantCulture) : "")
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-2 fw-bold">
+                @Html.DisplayNameFor(model => model.PublishDate)
+            </div>
+            <div class="col-10">
+                @(Model.PublishDate.ToString("MM/dd/yyyy"))
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-2 fw-bold">
+                @Html.DisplayNameFor(model => model.UserName)
+            </div>
+            <div class="col-10">
+                @Html.DisplayFor(model => model.UserName)
+            </div>
+        </div>
+
+        <hr />
+        <div class="action-links">
+            <a asp-action="Edit" asp-route-id="@Model.Record.Id">Edit</a>
+            |
+            <a asp-action="Delete" asp-route-id="@Model.Record.Id">Delete</a>
+            |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+}

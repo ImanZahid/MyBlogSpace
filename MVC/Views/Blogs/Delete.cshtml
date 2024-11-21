@@ -1,0 +1,174 @@
+﻿@model BlogModels
+
+@* Generated from Custom Template. *@
+@* Model namespace using directive should be added to _ViewImports.cshtml. *@
+
+@{
+    var containerDivClass = "container";
+}
+@{
+    ViewData["Title"] = "Blog Delete";
+}
+
+<style>
+    body {
+        background-color: #fff8f8 !important;
+        font-family: 'Poppins', sans-serif !important;
+        color: #333 !important;
+    }
+
+    h1, h3 {
+        color: #ff6f91 !important;
+        font-family: 'Playfair Display', serif !important;
+        font-weight: bold !important;
+        text-align: center !important;
+    }
+
+    .fw-bold {
+        font-weight: bold !important;
+        color: #333 !important;
+    }
+
+    .btn-danger {
+        background-color: #ff6f91 !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 5px !important;
+        padding: 10px 20px !important;
+        font-size: 16px !important;
+        text-transform: uppercase !important;
+    }
+
+    .btn-danger:hover {
+        background-color: #ff5777 !important;
+    }
+
+    .btn-outline-danger {
+        border: 2px solid #ff6f91 !important;
+        color: #ff6f91 !important;
+        background: transparent !important;
+        border-radius: 5px !important;
+        padding: 10px 20px !important;
+        font-size: 16px !important;
+        text-transform: uppercase !important;
+    }
+
+    .btn-outline-danger:hover {
+        background-color: #ff6f91 !important;
+        color: white !important;
+    }
+
+    .container {
+        max-width: 800px !important;
+        margin: 0 auto !important;
+        background-color: white !important;
+        padding: 20px !important;
+        border-radius: 15px !important;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    hr {
+        border: 1px solid #ffd1e1 !important;
+    }
+
+    .text-danger {
+        color: #ff6f91 !important;
+    }
+
+    .row.mb-3 .col-2 {
+        color: #ff6f91 !important;
+        font-weight: bold !important;
+    }
+
+    a {
+        color: #ff6f91 !important;
+        font-weight: bold !important;
+        text-decoration: none !important;
+    }
+
+    a:hover {
+        color: #ff5777 !important;
+        text-decoration: underline !important;
+    }
+</style>
+
+
+<div class="@containerDivClass">
+    <h1>@ViewData["Title"]</h1>
+    <hr />
+</div>
+
+@if (Model is not null)
+{
+<div class="@containerDivClass">
+    @if (TempData["Message"] is not null)
+    {
+    <p class="text-danger">
+        @TempData["Message"]
+    </p>
+    }
+    <h3 class="text-danger">Are you sure you want to delete?</h3>
+    <hr />
+    <div class="row mb-3">
+        <div class="col-2 fw-bold">
+            @Html.DisplayNameFor(model => model.Title)
+        </div>
+        <div class="col-10">
+            @Html.DisplayFor(model => model.Title)
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-2 fw-bold">
+            @Html.DisplayNameFor(model => model.Content)
+        </div>
+        <div class="col-10">
+            @Html.DisplayFor(model => model.Content)
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-2 fw-bold">
+            @Html.DisplayNameFor(model => model.Rating)
+        </div>
+        <div class="col-10">
+            @Html.DisplayFor(model => model.Rating)
+        </div>
+    </div>
+        <div class="row mb-3">
+            <div class="col-2 fw-bold">
+                @Html.DisplayNameFor(model => model.PublishDate)
+            </div>
+            <div class="col-10">
+                @(Model.Record.PublishDate.ToString("MM/dd/yyyy"))
+            </div>
+        </div>
+
+    <div class="row mb-3">
+        <div class="col-2 fw-bold">
+            @Html.DisplayNameFor(model => model.UserName)
+        </div>
+        <div class="col-10">
+            @Html.DisplayFor(model => model.UserName)
+        </div>
+    </div>
+
+@* Can be uncommented and used for many to many relationships. ManyToManyRecord may be replaced with the related entiy name in the controller and views. *@
+    @*
+    <div class="row mb-3">
+        <div class="col-2 fw-bold">
+            <b>@Html.DisplayNameFor(model => model.ManyToManyRecords)</b>
+        </div>
+        <div class="col-10">
+            @Html.Raw(Model.ManyToManyRecords)
+        </div>
+    </div>
+    *@
+
+    <hr />
+    <form asp-action="Delete">
+	    @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Record.Id" />
+        <input type="submit" value="Yes" class="btn btn-danger" />&nbsp;&nbsp;
+        <a asp-action="Index" class="btn btn-outline-danger">No</a>
+    </form>
+</div>
+}

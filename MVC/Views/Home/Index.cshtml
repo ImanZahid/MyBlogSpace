@@ -1,0 +1,125 @@
+﻿@{
+    ViewData["Title"] = "Welcome to Our Blog";
+}
+
+<style>
+    
+    body {
+        background-color: #fff8f8;
+        font-family: 'Poppins', sans-serif;
+        color: #333;
+    }
+
+    h1, h2 {
+        font-family: 'Playfair Display', serif;
+    }
+
+    .text-pink {
+        color: #ff6f91;
+    }
+
+    .btn-pink {
+        background-color: #ff6f91;
+        color: white;
+        border: none;
+    }
+
+    .btn-pink:hover {
+        background-color: #ff5777;
+        color: white;
+    }
+
+    .btn-outline-pink {
+        border: 2px solid #ff6f91;
+        color: #ff6f91;
+        background: transparent;
+    }
+
+    .btn-outline-pink:hover {
+        background-color: #ff6f91;
+        color: white;
+    }
+
+    .card {
+        border: none;
+        border-radius: 15px;
+    }
+
+    .card img {
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+    .container {
+        max-width: 1200px;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="text-center">
+        <img src="/Assets/MyBlogSpace.png" class="img-fluid rounded mb-4" alt="MyBlogSpace Logo" style="max-width: 300px;">
+        <h1 class="display-4 text-pink">Welcome to MyBlogSpace</h1>
+        <p class="lead text-muted">Discover amazing stories, insights, and ideas from passionate writers around the world.</p>
+        <a href="#" onclick="reloadPage();" class="btn btn-pink btn-lg mt-3">Explore Our Blog</a>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <img src="/Assets/MyBlogSpace.png" class="img-fluid rounded shadow" alt="About Our Blog">
+        </div>
+        <div class="col-md-6 d-flex align-items-center">
+            <div>
+                <h2 class="text-pink">About Us</h2>
+                <p>Welcome to MyBlogSpace, a platform dedicated to sharing engaging content on technology, lifestyle, travel, and more.</p>
+                <p>Our mission is to connect readers with thoughtful and inspiring stories created by a diverse community of writers.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <h2 class="text-center mb-4 text-pink">Featured Posts</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <img src="/Assets/ExamplePost1.png" class="card-img-top" alt="Post 1 Image">
+                    <div class="card-body">
+                        <h5 class="card-title text-pink">The Art of Mindful Living</h5>
+                        <p class="card-text">Learn how to live mindfully and make the most of every moment.</p>
+                        <a href="#" onclick="reloadPage();" class="btn btn-outline-pink btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <img src="/Assets/ExamplePost2.png" class="card-img-top" alt="Post 2 Image">
+                    <div class="card-body">
+                        <h5 class="card-title text-pink">Exploring the Wonders of Nature</h5>
+                        <p class="card-text">Dive into the beauty of the natural world with our travel guides.</p>
+                        <a href="#" onclick="reloadPage();" class="btn btn-outline-pink btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <img src="/Assets/ExamplePost3.png" class="card-img-top" alt="Post 3 Image">
+                    <div class="card-body">
+                        <h5 class="card-title text-pink">Tech Trends to Watch in 2024</h5>
+                        <p class="card-text">Stay ahead with the latest developments in technology and innovation.</p>
+                        <a href="#" onclick="reloadPage();" class="btn btn-outline-pink btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function reloadPage() {
+        location.reload();
+    }
+</script>
