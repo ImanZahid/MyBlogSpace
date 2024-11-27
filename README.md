@@ -36,7 +36,7 @@ CREATE TABLE [User] (
     Id INT PRIMARY KEY,
     UserName VARCHAR(100) NOT NULL,
     Password VARCHAR(255) NOT NULL,
-    IsActive BOOLEAN NOT NULL,
+    IsActive BIT NOT NULL,
     RoleId INT,
     FOREIGN KEY (RoleId) REFERENCES Role(Id)
 );
