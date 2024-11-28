@@ -32,7 +32,7 @@ CREATE TABLE Role (
 );
 
 -- Create User table
-CREATE TABLE [User] (
+CREATE TABLE [Users] (
     Id INT PRIMARY KEY,
     UserName VARCHAR(100) NOT NULL,
     Password VARCHAR(255) NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE Blog (
     Rating DECIMAL(3, 2),
     PublishDate DATETIME NOT NULL,
     UserId INT,
-    FOREIGN KEY (UserId) REFERENCES [User](Id)
+    FOREIGN KEY (UserId) REFERENCES [Users](Id)
 );
 
 -- Create Tag table
