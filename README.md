@@ -46,7 +46,7 @@ CREATE TABLE Blog (
     Id INT PRIMARY KEY,
     Title VARCHAR(255) NOT NULL,
     Content TEXT NOT NULL,
-    Rating DECIMAL(3, 2),
+    Rating INT,
     PublishDate DATETIME NOT NULL,
     UserId INT,
     FOREIGN KEY (UserId) REFERENCES [Users](Id)
