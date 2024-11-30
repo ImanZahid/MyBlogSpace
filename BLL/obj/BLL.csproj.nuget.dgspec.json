@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\iman.zahid\\Desktop\\onlineBlogs\\BLL\\BLL.csproj": {}
+    "C:\\Users\\iman.zahid\\Desktop\\MyBlogSpace\\BLL\\BLL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\iman.zahid\\Desktop\\onlineBlogs\\BLL\\BLL.csproj": {
+    "C:\\Users\\iman.zahid\\Desktop\\MyBlogSpace\\BLL\\BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\iman.zahid\\Desktop\\onlineBlogs\\BLL\\BLL.csproj",
+        "projectUniqueName": "C:\\Users\\iman.zahid\\Desktop\\MyBlogSpace\\BLL\\BLL.csproj",
         "projectName": "BLL",
-        "projectPath": "C:\\Users\\iman.zahid\\Desktop\\onlineBlogs\\BLL\\BLL.csproj",
+        "projectPath": "C:\\Users\\iman.zahid\\Desktop\\MyBlogSpace\\BLL\\BLL.csproj",
         "packagesPath": "C:\\Users\\iman.zahid\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\iman.zahid\\Desktop\\onlineBlogs\\BLL\\obj\\",
+        "outputPath": "C:\\Users\\iman.zahid\\Desktop\\MyBlogSpace\\BLL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\iman.zahid\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -48,7 +48,7 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.10, )"
+              "version": "[9.0.0, )"
             }
           },
           "imports": [

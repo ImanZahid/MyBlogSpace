@@ -27,7 +27,7 @@ public partial class DB : DbContext
     {
         modelBuilder.Entity<Blog>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Blog__3214EC0752F3AB1F");
+            entity.HasKey(e => e.Id).HasName("PK__Blog__3214EC07807EE01F");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
 
@@ -36,7 +36,7 @@ public partial class DB : DbContext
 
         modelBuilder.Entity<BlogTag>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__BlogTag__3214EC07FAA9413F");
+            entity.HasKey(e => e.Id).HasName("PK__BlogTag__3214EC07B62A2206");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
 
@@ -51,21 +51,21 @@ public partial class DB : DbContext
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Role__3214EC078A561F4A");
+            entity.HasKey(e => e.Id).HasName("PK__Role__3214EC07C45DA793");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
         });
 
         modelBuilder.Entity<Tag>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Tag__3214EC07052D45C1");
+            entity.HasKey(e => e.Id).HasName("PK__Tag__3214EC07BD9C7689");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Users__3214EC0780A5C1BD");
+            entity.HasKey(e => e.Id).HasName("PK__Users__3214EC0745F799EF");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
 

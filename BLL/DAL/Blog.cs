@@ -23,8 +23,7 @@ public partial class Blog
     [Column(TypeName = "text")]
     public string Content { get; set; }
 
-    [Column(TypeName = "decimal(4, 2)")]
-    public decimal? Rating { get; set; }
+    public int? Rating { get; set; }
 
     [Column(TypeName = "datetime")]
     public DateTime PublishDate { get; set; }
