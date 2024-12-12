@@ -170,7 +170,7 @@
         <hr />
         <form asp-action="Delete">
             @Html.AntiForgeryToken()
-            <input type="hidden" asp-for="Record.Id" />
+            <input type="hidden" asp-for="@Model.UserId" />
             <div class="row mb-3">
                 <div class="offset-2 col-10 d-flex justify-content-start gap-3">
                     <button type="submit" class="btn-pink">Yes</button>

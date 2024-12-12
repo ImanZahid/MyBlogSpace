@@ -138,7 +138,7 @@
                 @Html.DisplayNameFor(model => model.PublishDate)
             </div>
             <div class="col-10">
-                @(Model.Record.PublishDate.ToString("dd.MM.yyyy"))
+                @Model.PublishDate
             </div>
         </div>
 
@@ -166,7 +166,7 @@
     <hr />
     <form asp-action="Delete">
 	    @Html.AntiForgeryToken()
-        <input type="hidden" asp-for="Record.Id" />
+        <input type="hidden" asp-for="@Model.BlogId" />
         <input type="submit" value="Yes" class="btn btn-danger" />&nbsp;&nbsp;
         <a asp-action="Index" class="btn btn-outline-danger">No</a>
     </form>

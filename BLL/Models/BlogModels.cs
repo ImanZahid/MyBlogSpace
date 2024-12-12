@@ -18,10 +18,10 @@ namespace BLL.Models
         public string Content => Record.Content;
 
         [DisplayName("Rating")]
-        public decimal? Rating => Record.Rating;
+        public string? Rating => Record.Rating.HasValue ? Record.Rating.Value.ToString("F2", System.Globalization.CultureInfo.InvariantCulture) : "";
 
         [DisplayName("Publish Date")]
-        public DateTime PublishDate => Record.PublishDate;
+        public string PublishDate => Record.PublishDate.ToString("dd.MM.yyyy");
 
         [DisplayName("Blog ID")]
         public int BlogId => Record.Id;
@@ -29,13 +29,16 @@ namespace BLL.Models
         [DisplayName("User")]
         public string UserName => Record.User?.UserName;
 
+        [DisplayName("UserId")]
+        public int? UserId => Record.UserId;
+
         [DisplayName("Tags")]
         public ICollection<string> Tags
         {
             get
             {
                 var tags = new List<string>();
-                if (Record.BlogTags != null)
+                if (Record != null && Record.BlogTags != null)
                 {
                     foreach (var blogTag in Record.BlogTags)
                     {

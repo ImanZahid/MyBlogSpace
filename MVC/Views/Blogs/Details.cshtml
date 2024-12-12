@@ -100,7 +100,7 @@
                 @Html.DisplayNameFor(model => model.Rating)
             </div>
             <div class="col-10">
-                @(Model.Rating.HasValue ? Model.Rating.Value.ToString("F2", System.Globalization.CultureInfo.InvariantCulture) : "")
+                @Model.Rating
             </div>
         </div>
         <div class="row mb-3">
@@ -108,7 +108,7 @@
                 @Html.DisplayNameFor(model => model.PublishDate)
             </div>
             <div class="col-10">
-                @(Model.PublishDate.ToString("dd.MM.yyyy"))
+                @Model.PublishDate
             </div>
         </div>
         <div class="row mb-3">
@@ -122,9 +122,9 @@
 
         <hr />
         <div class="action-links">
-            <a asp-action="Edit" asp-route-id="@Model.Record.Id">Edit</a>
+            <a asp-action="Edit" asp-route-id="@Model.BlogId">Edit</a>
             |
-            <a asp-action="Delete" asp-route-id="@Model.Record.Id">Delete</a>
+            <a asp-action="Delete" asp-route-id="@Model.BlogId">Delete</a>
             |
             <a asp-action="Index">Back to List</a>
         </div>

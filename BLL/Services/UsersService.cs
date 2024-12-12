@@ -25,6 +25,8 @@ namespace BLL.Services
         {
             try
             {
+                if (_db.Users.Any(u => u.UserName.ToUpper() == user.UserName.Trim().ToUpper()))
+                    return Error("User with the same username already exists!");
                 _db.Users.Add(user);
                 _db.SaveChanges();
                 return Success("User created successfully.");

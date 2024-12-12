@@ -1,13 +1,15 @@
-﻿-- Create Role table
+﻿USE OnlineBlogsDB;
+
+-- Create Role table
 CREATE TABLE Role (
-    Id INT PRIMARY KEY,
+    Id INT IDENTITY(1,1) PRIMARY KEY,
     Name VARCHAR(100) NOT NULL
 );
 
--- Create User table
+-- Create Users table with UNIQUE constraint on UserName
 CREATE TABLE [Users] (
-    Id INT PRIMARY KEY,
-    UserName VARCHAR(100) NOT NULL,
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    UserName VARCHAR(100) NOT NULL UNIQUE,
     Password VARCHAR(255) NOT NULL,
     IsActive BIT NOT NULL,
     RoleId INT,
@@ -16,7 +18,7 @@ CREATE TABLE [Users] (
 
 -- Create Blog table
 CREATE TABLE Blog (
-    Id INT PRIMARY KEY,
+    Id INT IDENTITY(1,1) PRIMARY KEY,
     Title VARCHAR(255) NOT NULL,
     Content TEXT NOT NULL,
     Rating DECIMAL(3, 2),
@@ -27,13 +29,13 @@ CREATE TABLE Blog (
 
 -- Create Tag table
 CREATE TABLE Tag (
-    Id INT PRIMARY KEY,
+    Id INT IDENTITY(1,1) PRIMARY KEY,
     Name VARCHAR(100) NOT NULL
 );
 
 -- Create BlogTag table with a separate Id column as primary key
 CREATE TABLE BlogTag (
-    Id INT PRIMARY KEY,
+    Id INT IDENTITY(1,1) PRIMARY KEY,
     BlogId INT,
     TagId INT,
     FOREIGN KEY (BlogId) REFERENCES Blog(Id) ON DELETE CASCADE,
