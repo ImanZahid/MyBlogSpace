@@ -1,0 +1,78 @@
+﻿@model TagModels
+
+@{
+    ViewData["Title"] = "Create Tag";
+    var containerDivClass = "container";
+}
+
+<style>
+    body {
+        background-color: #fff8f8;
+        font-family: 'Poppins', sans-serif;
+        color: #333;
+    }
+
+    h1 {
+        color: #ff6f91;
+        font-family: 'Playfair Display', serif;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .btn-pink {
+        background-color: #ff6f91;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        text-decoration: none;
+    }
+
+    .btn-pink:hover {
+        background-color: #ff5777;
+        color: white;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .text-danger {
+        color: #ff6f91;
+    }
+
+    label {
+        font-weight: bold;
+    }
+</style>
+
+<div class="@containerDivClass">
+    <h1>@ViewData["Title"]</h1>
+    <hr />
+    <form asp-action="Create" method="post" autocomplete="off">
+        @Html.AntiForgeryToken()
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="row mb-3">
+            <label asp-for="Record.Name" class="col-2 col-form-label fw-bold"></label>
+            <div class="col-10">
+                <input asp-for="Record.Name" class="form-control" placeholder="Enter tag name" />
+                <span asp-validation-for="Record.Name" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="offset-2 col-10">
+                <button type="submit" class="btn-pink">Create</button>
+                <a asp-action="Index" class="btn-outline-pink">Back to List</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

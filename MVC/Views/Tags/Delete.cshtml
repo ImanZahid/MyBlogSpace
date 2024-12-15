@@ -1,0 +1,149 @@
+﻿@model TagModels
+
+@{
+    var containerDivClass = "container";
+}
+@{
+    ViewData["Title"] = "Tag Delete";
+}
+
+<style>
+    body {
+        background-color: #fff8f8 !important;
+        font-family: 'Poppins', sans-serif !important;
+        color: #333 !important;
+    }
+
+    h1 {
+        color: #ff6f91 !important;
+        font-family: 'Playfair Display', serif !important;
+        font-weight: bold !important;
+        text-align: center !important;
+    }
+
+    .fw-bold {
+        font-weight: bold !important;
+        color: #333 !important;
+    }
+
+    .btn-pink {
+        width: 120px !important;
+        height: 45px !important;
+        font-size: 16px !important;
+        border-radius: 5px !important;
+        text-align: center !important;
+        background-color: #ff6f91 !important;
+        color: white !important;
+        border: none !important;
+        display: inline-block !important;
+        text-decoration: none !important;
+    }
+
+    .btn-pink:hover {
+        background-color: #ff5777 !important;
+        text-decoration: none !important;
+    }
+
+    .btn-outline-pink {
+        width: 120px !important;
+        height: 45px !important;
+        font-size: 16px !important;
+        border-radius: 5px !important;
+        text-align: center !important;
+        border: 2px solid #ff6f91 !important;
+        color: #ff6f91 !important;
+        background: transparent !important;
+        display: inline-block !important;
+        text-decoration: none !important;
+    }
+
+    .btn-outline-pink:hover {
+        background-color: #ff6f91 !important;
+        color: white !important;
+        text-decoration: none !important;
+    }
+
+    a {
+        color: #ff6f91 !important;
+        font-weight: bold !important;
+        text-decoration: none !important;
+        font-size: 16px !important;
+    }
+
+    a:hover {
+        color: #ff5777 !important;
+        text-decoration: underline !important;
+    }
+
+    label {
+        font-weight: bold !important;
+        color: #333 !important;
+    }
+
+    .container {
+        max-width: 800px !important;
+        margin: 0 auto !important;
+        background-color: white !important;
+        padding: 20px !important;
+        border-radius: 15px !important;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    hr {
+        border: 1px solid #ffd1e1 !important;
+    }
+
+    .d-flex {
+        display: flex !important;
+    }
+
+    .justify-content-start {
+        justify-content: flex-start !important;
+    }
+
+    .gap-3 {
+        gap: 15px !important;
+    }
+
+    .text-danger {
+        color: #ff6f91 !important;
+    }
+</style>
+
+<div class="@containerDivClass">
+    <h1>@ViewData["Title"]</h1>
+    <hr />
+</div>
+
+@if (Model is not null)
+{
+    <div class="@containerDivClass">
+        @if (TempData["Message"] is not null)
+        {
+            <p class="text-danger">
+                @TempData["Message"]
+            </p>
+        }
+        <h3 class="text-danger">Are you sure you want to delete this tag?</h3>
+        <hr />
+        <div class="row mb-3">
+            <div class="col-2 fw-bold">
+                @Html.DisplayNameFor(model => model.TagName)
+            </div>
+            <div class="col-10">
+                @Html.DisplayFor(model => model.TagName)
+            </div>
+        </div>
+        <hr />
+        <form asp-action="Delete">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="@Model.TagId" />
+            <div class="row mb-3">
+                <div class="offset-2 col-10 d-flex justify-content-start gap-3">
+                    <button type="submit" class="btn-pink">Yes</button>
+                    <a asp-action="Index" class="btn btn-outline-pink">No</a>
+                </div>
+            </div>
+        </form>
+    </div>
+}
