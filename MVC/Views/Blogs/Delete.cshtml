@@ -142,14 +142,32 @@
             </div>
         </div>
 
-    <div class="row mb-3">
-        <div class="col-2 fw-bold">
-            @Html.DisplayNameFor(model => model.UserName)
+        <div class="row mb-3">
+            <div class="col-2 fw-bold">
+                @Html.DisplayNameFor(model => model.UserName)
+            </div>
+            <div class="col-10">
+                @if (@Model.UserName != null && @Model.UserName != "")
+                {
+                    @Html.DisplayFor(modelItem => @Model.UserName)
+                }
+                else
+                {
+                    <i>
+                        No user
+                    </i>
+                }
+            </div>
         </div>
-        <div class="col-10">
-            @Html.DisplayFor(model => model.UserName)
+
+        <div class="row mb-3">
+            <div class="col-2 fw-bold">
+                <b>@Html.DisplayNameFor(model => model.Tags)</b>
+            </div>
+            <div class="col-10">
+                @Html.Raw(Model.Tags)
+            </div>
         </div>
-    </div>
 
 @* Can be uncommented and used for many to many relationships. ManyToManyRecord may be replaced with the related entiy name in the controller and views. *@
     @*

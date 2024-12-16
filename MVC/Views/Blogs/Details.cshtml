@@ -129,7 +129,16 @@
                 @Html.DisplayNameFor(model => model.UserName)
             </div>
             <div class="col-10">
-                @Html.DisplayFor(model => model.UserName)
+                @if (@Model.UserName != null && @Model.UserName != "")
+                {
+                    @Html.DisplayFor(modelItem => @Model.UserName)
+                }
+                else
+                {
+                    <i>
+                        No user
+                    </i>
+                }
             </div>
         </div>
 

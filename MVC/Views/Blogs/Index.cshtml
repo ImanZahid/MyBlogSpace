@@ -135,6 +135,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.UserName)
                         </th>
+                        <th>Tags</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -155,7 +156,28 @@
                                 @item.PublishDate
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.UserName)
+                                @if (item.UserName != null && item.UserName != "")
+                                {
+                                    @Html.DisplayFor(modelItem => item.UserName)
+                                }
+                                else
+                                {
+                                    <i>
+                                        No user
+                                    </i>
+                                }
+                            </td>
+                            <td>
+                                @if (item.Tags != null && item.Tags.Any())
+                                {
+                                    <div>
+                                        @Html.Raw(@item.Tags)
+                                    </div>
+                                }
+                                else
+                                {
+                                    <span>No Tags</span>
+                                }
                             </td>
                             <td class="text-end w-25">
                                 <a asp-action="Details" asp-route-id="@item.BlogId">Details</a>&nbsp;|&nbsp;
