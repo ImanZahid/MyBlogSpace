@@ -41,7 +41,7 @@ namespace BLL.Services
         // Update an existing blog
         public Service Update(Blog blog)
         {
-            var existingBlog = _db.Blogs.FirstOrDefault(b => b.Id == blog.Id);
+            var existingBlog = _db.Blogs.Include(b => b.BlogTags).FirstOrDefault(b => b.Id == blog.Id);
             if (existingBlog == null)
             {
                 return Error("Blog not found.");
@@ -49,12 +49,15 @@ namespace BLL.Services
 
             try
             {
+                _db.BlogTags.RemoveRange(existingBlog.BlogTags);
                 existingBlog.Title = blog.Title;
                 existingBlog.Content = blog.Content;
                 existingBlog.Rating = blog.Rating;
                 existingBlog.PublishDate = blog.PublishDate;
                 existingBlog.UserId = blog.UserId;
+                existingBlog.BlogTags = blog.BlogTags;
 
+                _db.Blogs.Update(existingBlog);
                 _db.SaveChanges();
                 return Success("Blog updated successfully.");
             }
@@ -89,9 +92,10 @@ namespace BLL.Services
         public IQueryable<BlogModels> Query()
         {
             return _db.Blogs
-                .Include(b => b.User) 
+                .Include(b => b.User)
+                .Include(b => b.BlogTags)
+                .ThenInclude(bt => bt.Tag)
                 .Select(b => new BlogModels { Record = b });
         }
-
     }
 }

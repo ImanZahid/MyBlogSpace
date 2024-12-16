@@ -27,39 +27,35 @@ public partial class DB : DbContext
     {
         modelBuilder.Entity<Blog>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Blog__3214EC075E332111");
+            entity.HasKey(e => e.Id).HasName("PK__Blog__3214EC0736AEB943");
 
-            entity.HasOne(d => d.User).WithMany(p => p.Blogs).HasConstraintName("FK__Blog__UserId__5812160E");
+            entity.HasOne(d => d.User).WithMany(p => p.Blogs).HasConstraintName("FK__Blog__UserId__76969D2E");
         });
 
         modelBuilder.Entity<BlogTag>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__BlogTag__3214EC07D3A1F26B");
+            entity.HasKey(e => e.Id).HasName("PK__BlogTag__3214EC07F7D02ACE");
 
-            entity.HasOne(d => d.Blog).WithMany(p => p.BlogTags)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK__BlogTag__BlogId__5CD6CB2B");
+            entity.HasOne(d => d.Blog).WithMany(p => p.BlogTags).HasConstraintName("FK__BlogTag__BlogId__7B5B524B");
 
-            entity.HasOne(d => d.Tag).WithMany(p => p.BlogTags)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK__BlogTag__TagId__5DCAEF64");
+            entity.HasOne(d => d.Tag).WithMany(p => p.BlogTags).HasConstraintName("FK__BlogTag__TagId__7C4F7684");
         });
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Role__3214EC0762BB4C6A");
+            entity.HasKey(e => e.Id).HasName("PK__Role__3214EC0750278DCA");
         });
 
         modelBuilder.Entity<Tag>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Tag__3214EC07DEAD51AE");
+            entity.HasKey(e => e.Id).HasName("PK__Tag__3214EC07472BA4FA");
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Users__3214EC071F9FF5AD");
+            entity.HasKey(e => e.Id).HasName("PK__Users__3214EC075CB47E93");
 
-            entity.HasOne(d => d.Role).WithMany(p => p.Users).HasConstraintName("FK__Users__RoleId__5535A963");
+            entity.HasOne(d => d.Role).WithMany(p => p.Users).HasConstraintName("FK__Users__RoleId__73BA3083");
         });
 
         OnModelCreatingPartial(modelBuilder);

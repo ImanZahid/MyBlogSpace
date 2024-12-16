@@ -4,20 +4,27 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using BLL.Controllers.Bases;
 using BLL.Services;
 using BLL.Models;
-using System.Linq;
+using BLL.DAL;
+
+// Generated from Custom Template.
 
 namespace MVC.Controllers
 {
     public class BlogsController : MvcController
     {
         private readonly IBlogService _blogService;
+        private readonly ITagService _TagService;
         private readonly IUsersService _userService;
 
         public BlogsController(
-            IBlogService blogService,
-            IUsersService userService)
+            IBlogService blogService
+            , ITagService TagService
+            , IUsersService userService
+
+        )
         {
             _blogService = blogService;
+            _TagService = TagService;
             _userService = userService;
         }
 
@@ -39,12 +46,14 @@ namespace MVC.Controllers
             return View(item);
         }
 
-        // Set ViewData for dropdown lists
         protected void SetViewData()
         {
             ViewData["UserId"] = new SelectList(
                 _userService.Query().Select(u => u.Record).ToList(),
                 "Id", "UserName");
+            var tags = _TagService.Query().ToList();
+            var multiSelect = new MultiSelectList(tags, "TagId", "TagName");
+            ViewBag.TagIds = multiSelect;
         }
 
         // GET: Blogs/Create

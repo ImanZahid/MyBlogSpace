@@ -14,9 +14,9 @@ public partial class BlogTag
     [Key]
     public int Id { get; set; }
 
-    public int? BlogId { get; set; }
+    public int BlogId { get; set; }
 
-    public int? TagId { get; set; }
+    public int TagId { get; set; }
 
     [ForeignKey("BlogId")]
     [InverseProperty("BlogTags")]

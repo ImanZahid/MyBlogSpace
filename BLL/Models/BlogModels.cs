@@ -32,21 +32,14 @@ namespace BLL.Models
         [DisplayName("UserId")]
         public int? UserId => Record.UserId;
 
+        public string Tags => string.Join("<br>", Record.BlogTags?.Select(bt => bt.Tag?.Name));
+
+
         [DisplayName("Tags")]
-        public ICollection<string> Tags
+        public List<int> TagIds
         {
-            get
-            {
-                var tags = new List<string>();
-                if (Record != null && Record.BlogTags != null)
-                {
-                    foreach (var blogTag in Record.BlogTags)
-                    {
-                        tags.Add(blogTag.Tag?.Name); 
-                    }
-                }
-                return tags;
-            }
+            get => Record.BlogTags?.Select(t => t.TagId).ToList();
+            set => Record.BlogTags = value.Select(v => new BlogTag() { TagId = v }).ToList();
         }
     }
 }

@@ -53,13 +53,28 @@
         font-size: 16px;
     }
 
-    a:hover {
-        color: #ff5777;
-        text-decoration: underline;
-    }
+        a:hover {
+            color: #ff5777;
+            text-decoration: underline;
+        }
 
     .action-links a {
         margin-right: 10px;
+    }
+
+    .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .tag {
+        background-color: #ffeff3;
+        color: #ff6f91;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 14px;
     }
 </style>
 
@@ -69,11 +84,9 @@
 </div>
 
 @if (Model is not null)
-
 {
     <div class="@containerDivClass">
         @if (TempData["Message"] is not null)
-
         {
             <p class="text-danger">
                 @TempData["Message"]
@@ -119,6 +132,16 @@
                 @Html.DisplayFor(model => model.UserName)
             </div>
         </div>
+
+        <div class="row mb-3">
+            <div class="col-2 fw-bold">
+                <b>@Html.DisplayNameFor(model => model.Tags)</b>
+            </div>
+            <div class="col-10">
+                @Html.Raw(Model.Tags)
+            </div>
+        </div>
+
 
         <hr />
         <div class="action-links">

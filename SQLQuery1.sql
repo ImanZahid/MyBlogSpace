@@ -36,8 +36,8 @@ CREATE TABLE Tag (
 -- Create BlogTag table with a separate Id column as primary key
 CREATE TABLE BlogTag (
     Id INT IDENTITY(1,1) PRIMARY KEY,
-    BlogId INT,
-    TagId INT,
+    BlogId INT NOT NULL,
+    TagId INT NOT NULL,
     FOREIGN KEY (BlogId) REFERENCES Blog(Id) ON DELETE CASCADE,
     FOREIGN KEY (TagId) REFERENCES Tag(Id) ON DELETE CASCADE
 );
