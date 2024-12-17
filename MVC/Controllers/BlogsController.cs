@@ -6,8 +6,6 @@ using BLL.Services;
 using BLL.Models;
 using BLL.DAL;
 
-// Generated from Custom Template.
-
 namespace MVC.Controllers
 {
     public class BlogsController : MvcController
@@ -20,7 +18,6 @@ namespace MVC.Controllers
             IBlogService blogService
             , ITagService TagService
             , IUsersService userService
-
         )
         {
             _blogService = blogService;
@@ -28,20 +25,18 @@ namespace MVC.Controllers
             _userService = userService;
         }
 
-        // GET: Blogs
         public IActionResult Index()
         {
             var list = _blogService.Query().ToList();
             return View(list);
         }
 
-        // GET: Blogs/Details/5
         public IActionResult Details(int id)
         {
             var item = _blogService.Query().SingleOrDefault(q => q.Record.Id == id);
             if (item == null)
             {
-                return NotFound(); // 404 if not found
+                return NotFound();
             }
             return View(item);
         }
@@ -56,14 +51,12 @@ namespace MVC.Controllers
             ViewBag.TagIds = multiSelect;
         }
 
-        // GET: Blogs/Create
         public IActionResult Create()
         {
             SetViewData();
             return View();
         }
 
-        // POST: Blogs/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(BlogModels blog)
@@ -90,20 +83,18 @@ namespace MVC.Controllers
             return View(blog);
         }
 
-        // GET: Blogs/Edit/5
         public IActionResult Edit(int id)
         {
             var item = _blogService.Query().SingleOrDefault(q => q.Record.Id == id);
             if (item == null)
             {
-                return NotFound(); // 404 if not found
+                return NotFound();
             }
 
             SetViewData();
             return View(item);
         }
 
-        // POST: Blogs/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(BlogModels blog)
@@ -130,19 +121,17 @@ namespace MVC.Controllers
             return View(blog);
         }
 
-        // GET: Blogs/Delete/5
         public IActionResult Delete(int id)
         {
             var item = _blogService.Query().SingleOrDefault(q => q.Record.Id == id);
             if (item == null)
             {
-                return NotFound(); // 404 if not found
+                return NotFound();
             }
 
             return View(item);
         }
 
-        // POST: Blogs/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)

@@ -20,25 +20,22 @@ namespace MVC.Controllers
             _blogService = blogService;
         }
 
-        // GET: Tags
         public IActionResult Index()
         {
             var list = _tagService.Query().ToList();
             return View(list);
         }
 
-        // GET: Tags/Details/5
         public IActionResult Details(int id)
         {
             var item = _tagService.Query().SingleOrDefault(q => q.Record.Id == id);
             if (item == null)
             {
-                return NotFound(); // 404 if not found
+                return NotFound();
             }
             return View(item);
         }
 
-        // Set ViewData for dropdown lists
         protected void SetViewData()
         {
             ViewData["BlogId"] = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(
@@ -46,14 +43,12 @@ namespace MVC.Controllers
                 "Id", "Title");
         }
 
-        // GET: Tags/Create
         public IActionResult Create()
         {
             SetViewData();
             return View();
         }
 
-        // POST: Tags/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(TagModels tag)
@@ -80,20 +75,18 @@ namespace MVC.Controllers
             return View(tag);
         }
 
-        // GET: Tags/Edit/5
         public IActionResult Edit(int id)
         {
             var item = _tagService.Query().SingleOrDefault(q => q.Record.Id == id);
             if (item == null)
             {
-                return NotFound(); // 404 if not found
+                return NotFound();
             }
 
             SetViewData();
             return View(item);
         }
 
-        // POST: Tags/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(TagModels tag)
@@ -120,19 +113,17 @@ namespace MVC.Controllers
             return View(tag);
         }
 
-        // GET: Tags/Delete/5
         public IActionResult Delete(int id)
         {
             var item = _tagService.Query().SingleOrDefault(q => q.Record.Id == id);
             if (item == null)
             {
-                return NotFound(); // 404 if not found
+                return NotFound();
             }
 
             return View(item);
         }
 
-        // POST: Tags/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)

@@ -1,8 +1,7 @@
 ﻿using BLL.DAL;
 using BLL.Models;
 using BLL.Services.Bases;
-using System;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace BLL.Services
 {
@@ -19,8 +18,6 @@ namespace BLL.Services
         public UsersService(DB db) : base(db)
         {
         }
-
-        // Create a new user
         public Service Create(User user)
         {
             try
@@ -37,7 +34,6 @@ namespace BLL.Services
             }
         }
 
-        // Update an existing user
         public Service Update(User user)
         {
             var existingUser = _db.Users.FirstOrDefault(u => u.Id == user.Id);
@@ -62,7 +58,6 @@ namespace BLL.Services
             }
         }
 
-        // Delete a user by ID
         public Service Delete(int id)
         {
             var user = _db.Users.FirstOrDefault(u => u.Id == id);
@@ -83,10 +78,9 @@ namespace BLL.Services
             }
         }
 
-        // Query to get all users or filter as needed
         public IQueryable<UsersModels> Query()
         {
-            return _db.Users.Select(u => new UsersModels { Record = u });
+            return _db.Users.Include(u => u.Role).Select(u => new UsersModels { Record = u });
         }
     }
 }

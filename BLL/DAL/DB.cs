@@ -27,35 +27,35 @@ public partial class DB : DbContext
     {
         modelBuilder.Entity<Blog>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Blog__3214EC0736AEB943");
+            entity.HasKey(e => e.Id).HasName("PK__Blog__3214EC07C0ED280F");
 
-            entity.HasOne(d => d.User).WithMany(p => p.Blogs).HasConstraintName("FK__Blog__UserId__76969D2E");
+            entity.HasOne(d => d.User).WithMany(p => p.Blogs).HasConstraintName("FK__Blog__UserId__44CA3770");
         });
 
         modelBuilder.Entity<BlogTag>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__BlogTag__3214EC07F7D02ACE");
+            entity.HasKey(e => e.Id).HasName("PK__BlogTag__3214EC077DE8D872");
 
-            entity.HasOne(d => d.Blog).WithMany(p => p.BlogTags).HasConstraintName("FK__BlogTag__BlogId__7B5B524B");
+            entity.HasOne(d => d.Blog).WithMany(p => p.BlogTags).HasConstraintName("FK__BlogTag__BlogId__498EEC8D");
 
-            entity.HasOne(d => d.Tag).WithMany(p => p.BlogTags).HasConstraintName("FK__BlogTag__TagId__7C4F7684");
+            entity.HasOne(d => d.Tag).WithMany(p => p.BlogTags).HasConstraintName("FK__BlogTag__TagId__4A8310C6");
         });
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Role__3214EC0750278DCA");
+            entity.HasKey(e => e.Id).HasName("PK__Role__3214EC07BD492FE4");
         });
 
         modelBuilder.Entity<Tag>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Tag__3214EC07472BA4FA");
+            entity.HasKey(e => e.Id).HasName("PK__Tag__3214EC07F9860960");
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Users__3214EC075CB47E93");
+            entity.HasKey(e => e.Id).HasName("PK__Users__3214EC079876E2B2");
 
-            entity.HasOne(d => d.Role).WithMany(p => p.Users).HasConstraintName("FK__Users__RoleId__73BA3083");
+            entity.HasOne(d => d.Role).WithMany(p => p.Users).HasConstraintName("FK__Users__RoleId__41EDCAC5");
         });
 
         OnModelCreatingPartial(modelBuilder);
