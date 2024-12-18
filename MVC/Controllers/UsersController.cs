@@ -7,6 +7,7 @@ using BLL.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MVC.Controllers
 {
@@ -36,8 +37,9 @@ namespace MVC.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(UsersModels user)
+        public async Task<IActionResult> Login(UsersModels user, string ReturnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -64,13 +66,18 @@ namespace MVC.Controllers
                         CookieAuthenticationDefaults.AuthenticationScheme,
                         principal);
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Blogs");
                 }
             }
 
             return View();
         }
 
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
+        }
 
         public IActionResult Details(int id)
         {
@@ -80,7 +87,7 @@ namespace MVC.Controllers
 
         protected void SetViewData()
         {
-            ViewData["RoleId"] = new SelectList(_roleService.Query().ToList(), "Record.Id", "Name");
+            ViewData["RoleId"] = new SelectList(_roleService.Query().Select(r => r.Record).ToList(), "Id", "Name");
         }
 
         public IActionResult Create()

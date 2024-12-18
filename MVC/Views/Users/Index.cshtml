@@ -21,7 +21,7 @@
         color: #ff6f91;
         font-family: 'Playfair Display', serif;
         font-weight: bold;
-         text-align: center;
+        text-align: center;
     }
 
     .text-success {
@@ -40,20 +40,20 @@
         padding: 5px 10px;
     }
 
-    .btn-pink:hover {
-        background-color: #ff5777;
-        color: white;
-    }
+        .btn-pink:hover {
+            background-color: #ff5777;
+            color: white;
+        }
 
     .table {
         border: 1px solid #ffd1e1;
         background-color: #fff8f8;
     }
 
-    .table th {
-        background-color: #ffd1e1;
-        color: #333;
-    }
+        .table th {
+            background-color: #ffd1e1;
+            color: #333;
+        }
 
     .table-hover tbody tr:hover {
         background-color: #ffe5ec;
@@ -68,32 +68,14 @@
         text-decoration: none;
     }
 
-    a:hover {
-        color: #ff5777;
-        text-decoration: underline;
-    }
+        a:hover {
+            color: #ff5777;
+            text-decoration: underline;
+        }
 
     .text-end {
         text-align: right;
     }
-
-    .row.mb-3 {
-        align-items: center;
-    }
-
-    .col-2.text-end a {
-        font-size: 14px;
-        background-color: #ff6f91;
-        color: white;
-        padding: 5px 10px;
-        border-radius: 5px;
-        text-decoration: none;
-    }
-
-    .col-2.text-end a:hover {
-        background-color: #ff5777;
-    }
-</styl
 </style>
 
 <div class="@containerDivClass">
@@ -130,12 +112,15 @@
                         <th>
                             @Html.DisplayNameFor(model => model.IsActive)
                         </th>
-                        
+                        <th>
+                            @Html.DisplayNameFor(model => model.RoleName)
+                        </th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model) {
+                    @foreach (var item in Model)
+                    {
                         <tr>
                             <td>
                                 @Html.DisplayFor(modelItem => item.UserName)
@@ -146,7 +131,9 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.IsActive)
                             </td>
-                            
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RoleName)
+                            </td>
                             <td class="text-end w-25">
                                 <a asp-action="Details" asp-route-id="@item.UserId">Details</a>&nbsp;|&nbsp;
                                 <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a>&nbsp;|&nbsp;

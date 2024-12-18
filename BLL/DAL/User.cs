@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BLL.DAL;
 
-[Index("UserName", Name = "UQ__Users__C9F28456F320BF49", IsUnique = true)]
+[Index("UserName", Name = "UQ__Users__C9F28456C53487F8", IsUnique = true)]
 public partial class User
 {
     [Key]

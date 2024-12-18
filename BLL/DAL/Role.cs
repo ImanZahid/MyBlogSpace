@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace BLL.DAL;
 
 [Table("Role")]
-[Index("Name", Name = "UQ__Role__737584F64302FCB1", IsUnique = true)]
+[Index("Name", Name = "UQ__Role__737584F60BE3C252", IsUnique = true)]
 public partial class Role
 {
     [Key]

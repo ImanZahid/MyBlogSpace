@@ -132,9 +132,12 @@
                                 @Html.DisplayFor(modelItem => item.TagName)
                             </td>
                             <td class="text-end w-25">
-                                <a asp-action="Details" asp-route-id="@item.TagId">Details</a>&nbsp;|&nbsp;
-                                <a asp-action="Edit" asp-route-id="@item.TagId">Edit</a>&nbsp;|&nbsp;
-                                <a asp-action="Delete" asp-route-id="@item.TagId">Delete</a>
+                                <a asp-action="Details" asp-route-id="@item.TagId">Details</a>
+                                @if (User.IsInRole("admin"))
+                                {
+                                    <a asp-action="Edit" asp-route-id="@item.TagId">Edit</a>
+                                    <a asp-action="Delete" asp-route-id="@item.TagId">Delete</a>
+                                }
                             </td>
                         </tr>
                     }

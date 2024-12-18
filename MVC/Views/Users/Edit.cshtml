@@ -1,12 +1,8 @@
 ﻿@model UsersModels
 
 @* Generated from Custom Template. *@
-@* Model namespace using directive should be added to _ViewImports.cshtml. *@
-
 @{
     var containerDivClass = "container";
-}
-@{
     ViewData["Title"] = "User Edit";
 }
 
@@ -60,11 +56,11 @@
         text-decoration: none; 
     }
 
-        .btn-outline-pink:hover {
-            background-color: #ff6f91;
-            color: white;
-            text-decoration: none; 
-        }
+    .btn-outline-pink:hover {
+        background-color: #ff6f91;
+        color: white;
+        text-decoration: none; 
+    }
 
     a {
         color: #ff6f91;
@@ -131,56 +127,61 @@
 
 @if (Model is not null)
 {
-<div class="@containerDivClass">
-    @if (TempData["Message"] is not null)
-    {
-    <p class="text-danger">
-        @TempData["Message"]
-    </p>
-    }
-    <form asp-action="Edit" autocomplete="off">
-        @Html.AntiForgeryToken()
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input type="hidden" asp-for="Record.Id" />
-        <div class="row mb-3">
-            <label asp-for="UserName" class="col-2 col-form-label fw-bold"></label>
-            <div class="col-10">
-                <input asp-for="Record.UserName" class="form-control" />
-                <span asp-validation-for="Record.UserName" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label asp-for="Password" class="col-2 col-form-label fw-bold"></label>
-            <div class="col-10">
-                <input asp-for="Record.Password" class="form-control" />
-                <span asp-validation-for="Record.Password" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label asp-for="IsActive" class="col-2 col-form-label fw-bold"></label>
-            <div class="col-10 pt-2">
-                <input class="form-check-input" asp-for="Record.IsActive" />
-            </div>
-        </div>
-       @*  <div class="row mb-3">
-            <label asp-for="RoleName" class="col-2 col-form-label fw-bold"></label>
-            <div class="col-10">
-                <select asp-for="Record.RoleId" class="form-select" asp-items="ViewBag.RoleId">
-                    <option value="">-- Select --</option>
-                </select>
-                <span asp-validation-for="Record.RoleId" class="text-danger"></span>
-            </div>
-        </div> *@
+    <div class="@containerDivClass">
+        @if (TempData["Message"] is not null)
+        {
+            <p class="text-danger">
+                @TempData["Message"]
+            </p>
+        }
+        <form asp-action="Edit" autocomplete="off">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Record.Id" />
 
-        <hr />
-        <div class="row mb-3">
-            <div class="offset-2 col-10 btn-group">
-                <button type="submit" class="btn-pink">Save</button>
-                <button type="reset" class="btn-outline-pink">Reset</button>
-                <a asp-action="Delete" asp-route-id="@Model.Record.Id" class="btn-outline-pink">Delete</a>
-                    <a asp-action="Index" class="btn-outline-pink">Back to List</a>
+            <div class="row mb-3">
+                <label asp-for="UserName" class="col-2 col-form-label fw-bold"></label>
+                <div class="col-10">
+                    <input asp-for="Record.UserName" class="form-control" />
+                    <span asp-validation-for="Record.UserName" class="text-danger"></span>
+                </div>
             </div>
-        </div>
-    </form>
-</div>
+
+            <div class="row mb-3">
+                <label asp-for="Password" class="col-2 col-form-label fw-bold"></label>
+                <div class="col-10">
+                    <input asp-for="Record.Password" class="form-control" />
+                    <span asp-validation-for="Record.Password" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label asp-for="IsActive" class="col-2 col-form-label fw-bold"></label>
+                <div class="col-10 pt-2">
+                    <input class="form-check-input" asp-for="Record.IsActive" />
+                </div>
+            </div>
+
+            @* Role Selection Dropdown *@
+            <div class="row mb-3">
+                <label asp-for="RoleName" class="col-2 col-form-label fw-bold"></label>
+                <div class="col-10">
+                    <select asp-for="Record.RoleId" class="form-select" asp-items="ViewBag.RoleId">
+                        <option value="">-- Select Role --</option>
+                    </select>
+                    <span asp-validation-for="Record.RoleId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <hr />
+            <div class="row mb-3">
+                <div class="offset-2 col-10 btn-group">
+                    <button type="submit" class="btn-pink">Save</button>
+                    <button type="reset" class="btn-outline-pink">Reset</button>
+                    <a asp-action="Delete" asp-route-id="@Model.Record.Id" class="btn-outline-pink">Delete</a>
+                    <a asp-action="Index" class="btn-outline-pink">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
 }

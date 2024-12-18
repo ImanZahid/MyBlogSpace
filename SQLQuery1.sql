@@ -12,7 +12,7 @@ CREATE TABLE [Users] (
     UserName VARCHAR(100) NOT NULL UNIQUE,
     Password VARCHAR(255) NOT NULL,
     IsActive BIT NOT NULL,
-    RoleId INT,
+    RoleId INT NOT NULL,
     FOREIGN KEY (RoleId) REFERENCES Role(Id)
 );
 
@@ -46,11 +46,24 @@ CREATE TABLE BlogTag (
 INSERT INTO Role (Name)
 VALUES ('admin');
 
+-- Insert 'user' role into Role table
+INSERT INTO Role (Name)
+VALUES ('user');
+
 -- Insert 'admin' user and assign it the 'admin' role
 INSERT INTO [Users] (UserName, Password, IsActive, RoleId)
 VALUES (
     'admin',
-    'Admin@123',
+    '1234',
     1,
     (SELECT Id FROM Role WHERE Name = 'admin')
+);
+
+-- Insert 'user' user and assign it the 'admin' role
+INSERT INTO [Users] (UserName, Password, IsActive, RoleId)
+VALUES (
+    'user',
+    '1234',
+    1,
+    (SELECT Id FROM Role WHERE Name = 'user')
 );

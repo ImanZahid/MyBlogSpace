@@ -63,17 +63,36 @@
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Blogs" asp-action="Index">Blogs</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Tags" asp-action="Index">Tags</a>
-                            </li>
+                            @if (User.IsInRole("admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
+                                </li>    
+                            }
+                            @if (User.IsInRole("admin") || User.IsInRole("user"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Tags" asp-action="Index">Tags</a>
+                                </li>
+                            }
                         </ul>
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Login">Login</a>
-                            </li>
+                        <div class="navbar-text">
+                        <ul class="navbar-nav me-auto">
+                            @if (!User.Identity.IsAuthenticated)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Login">Login</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item pt-2 pe-2">
+                                    <span>@User.Identity.Name</span>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Logout">Logout</a>
+                                </li>
+                            }
                         </ul>
                     </div>
 

@@ -113,9 +113,13 @@
                 <div class="col-10 text-success">
                     <strong>@Model.Count()</strong> record(s) found.
                 </div>
-                <div class="col-2 text-end">
-                    <a asp-action="Create" class="btn-pink">Create</a>
-                </div>
+                @if (User.IsInRole("admin") || User.IsInRole("user"))
+                {
+                    <div class="col-2 text-end">
+                        <a asp-action="Create" class="btn-pink">Create</a>
+                    </div>
+                }
+                
             </div>
             <table class="table table-striped table-hover">
                 <thead class="table-secondary">
@@ -179,10 +183,14 @@
                                     <i>No Tags</i>
                                 }
                             </td>
-                            <td class="text-end w-25">
-                                <a asp-action="Details" asp-route-id="@item.BlogId">Details</a>&nbsp;|&nbsp;
-                                <a asp-action="Edit" asp-route-id="@item.BlogId">Edit</a>&nbsp;|&nbsp;
-                                <a asp-action="Delete" asp-route-id="@item.BlogId">Delete</a>
+                            <td class="text-end w-25 flex">
+                                <a asp-action="Details" asp-route-id="@item.BlogId">Details</a>
+                                @if (User.IsInRole("admin"))
+                                {
+                                    <a asp-action="Edit" asp-route-id="@item.BlogId">Edit</a>
+                                    <a asp-action="Delete" asp-route-id="@item.BlogId">Delete</a>
+                                }
+                                
                             </td>
                         </tr>
                     }

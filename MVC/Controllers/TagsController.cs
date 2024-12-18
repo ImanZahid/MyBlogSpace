@@ -4,9 +4,11 @@ using BLL.Controllers.Bases;
 using BLL.Services;
 using BLL.Models;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MVC.Controllers
 {
+    [Authorize(Roles = "admin, user")]
     public class TagsController : MvcController
     {
         private readonly ITagService _tagService;

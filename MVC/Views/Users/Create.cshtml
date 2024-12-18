@@ -1,6 +1,5 @@
 ﻿@model UsersModels
 @* Generated from Custom Template. *@
-@* Model namespace using directive should be added to _ViewImports.cshtml. *@
 @{
     var containerDivClass = "container";
 }
@@ -39,9 +38,9 @@
         display: inline-block;
     }
 
-    .btn-pink:hover {
-        background-color: #ff5777;
-    }
+        .btn-pink:hover {
+            background-color: #ff5777;
+        }
 
     .btn-outline-pink {
         width: 120px;
@@ -55,10 +54,10 @@
         display: inline-block;
     }
 
-    .btn-outline-pink:hover {
-        background-color: #ff6f91;
-        color: white;
-    }
+        .btn-outline-pink:hover {
+            background-color: #ff6f91;
+            color: white;
+        }
 
     a {
         color: #ff6f91;
@@ -67,10 +66,10 @@
         font-size: 16px;
     }
 
-    a:hover {
-        color: #ff5777;
-        text-decoration: underline;
-    }
+        a:hover {
+            color: #ff5777;
+            text-decoration: underline;
+        }
 
     label {
         font-weight: bold;
@@ -83,11 +82,11 @@
         border: 1px solid #ffd1e1;
     }
 
-    .form-control:focus,
-    .form-select:focus {
-        box-shadow: 0 0 5px #ff6f91;
-        border-color: #ff6f91;
-    }
+        .form-control:focus,
+        .form-select:focus {
+            box-shadow: 0 0 5px #ff6f91;
+            border-color: #ff6f91;
+        }
 
     .form-check-input {
         accent-color: #ff6f91;
@@ -118,7 +117,6 @@
 
 <div class="@containerDivClass">
     @if (TempData["Message"] is not null)
-
     {
         <p class="text-danger">
             @TempData["Message"]
@@ -127,52 +125,50 @@
     <form asp-action="Create" autocomplete="off">
         @Html.AntiForgeryToken()
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-       @*  <div class="row mb-3">
-            <label asp-for="UserId" class="col-2 col-form-label fw-bold"></label>
-            <div class="col-10">
-                <input asp-for="Record.Id" class="form-control" />
-                <span asp-validation-for="Record.Id" class="text-danger"></span>
-            </div>
-        </div> *@
+
         <div class="row mb-3">
-            <label asp-for="UserName" class="col-2 col-form-label fw-bold"></label>
+            <label asp-for="Record.UserName" class="col-2 col-form-label fw-bold">User Name</label>
             <div class="col-10">
                 <input asp-for="Record.UserName" class="form-control" />
                 <span asp-validation-for="Record.UserName" class="text-danger"></span>
             </div>
         </div>
+
         <div class="row mb-3">
-            <label asp-for="Password" class="col-2 col-form-label fw-bold"></label>
+            <label asp-for="Record.Password" class="col-2 col-form-label fw-bold">Password</label>
             <div class="col-10">
                 <input asp-for="Record.Password" class="form-control" />
                 <span asp-validation-for="Record.Password" class="text-danger"></span>
             </div>
         </div>
+
         <div class="row mb-3">
-            <label asp-for="IsActive" class="col-2 col-form-label fw-bold"></label>
+            <label asp-for="Record.IsActive" class="col-2 col-form-label fw-bold">Is Active</label>
             <div class="col-10 pt-2">
                 <input class="form-check-input" asp-for="Record.IsActive" />
             </div>
         </div>
-    @*     <div class="row mb-3">
-            <label asp-for="RoleId" class="col-2 col-form-label fw-bold"></label>
+
+        <!-- Role Selection Dropdown -->
+        <div class="row mb-3">
+            <label asp-for="Record.RoleId" class="col-2 col-form-label fw-bold">Role</label>
             <div class="col-10">
                 <select asp-for="Record.RoleId" class="form-select" asp-items="ViewBag.RoleId">
-                    <option value="">-- Select --</option>
+                    <option value="">-- Select Role --</option>
                 </select>
                 <span asp-validation-for="Record.RoleId" class="text-danger"></span>
             </div>
         </div>
- *@
-        <hr />  
+
+        <hr />
         <div class="row mb-3">
             <div class="offset-2 col-10">
                 <button type="submit" class="btn-pink">Save</button>
                 &nbsp;&nbsp;
                 <button type="reset" class="btn-outline-pink">Reset</button>
                 &nbsp;&nbsp;
-                <a asp-action="Index">Back to List</a>
+                <a asp-action="Index" class="btn-outline-pink">Back to List</a>
             </div>
         </div>
     </form>
-</div>  
+</div>

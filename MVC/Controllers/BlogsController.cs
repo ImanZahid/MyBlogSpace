@@ -5,6 +5,7 @@ using BLL.Controllers.Bases;
 using BLL.Services;
 using BLL.Models;
 using BLL.DAL;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MVC.Controllers
 {
@@ -25,12 +26,14 @@ namespace MVC.Controllers
             _userService = userService;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var list = _blogService.Query().ToList();
             return View(list);
         }
 
+        [AllowAnonymous]
         public IActionResult Details(int id)
         {
             var item = _blogService.Query().SingleOrDefault(q => q.Record.Id == id);
@@ -51,6 +54,7 @@ namespace MVC.Controllers
             ViewBag.TagIds = multiSelect;
         }
 
+        [Authorize(Roles = "admin,user")]
         public IActionResult Create()
         {
             SetViewData();
@@ -59,6 +63,7 @@ namespace MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin,user")]
         public IActionResult Create(BlogModels blog)
         {
             if (blog?.Record == null)
@@ -83,6 +88,7 @@ namespace MVC.Controllers
             return View(blog);
         }
 
+        [Authorize(Roles = "admin")]
         public IActionResult Edit(int id)
         {
             var item = _blogService.Query().SingleOrDefault(q => q.Record.Id == id);
@@ -97,6 +103,7 @@ namespace MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public IActionResult Edit(BlogModels blog)
         {
             if (blog?.Record == null)
@@ -121,6 +128,7 @@ namespace MVC.Controllers
             return View(blog);
         }
 
+        [Authorize(Roles = "admin")]
         public IActionResult Delete(int id)
         {
             var item = _blogService.Query().SingleOrDefault(q => q.Record.Id == id);
@@ -134,6 +142,7 @@ namespace MVC.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public IActionResult DeleteConfirmed(int id)
         {
             var result = _blogService.Delete(id);
