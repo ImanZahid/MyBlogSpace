@@ -6,6 +6,81 @@
 @{
     ViewData["Title"] = "Login";
 }
+
+<style>
+    body {
+        background-color: #fff8f8;
+        font-family: 'Poppins', sans-serif;
+        color: #333;
+    }
+
+    h1 {
+        color: #ff6f91;
+        font-family: 'Playfair Display', serif;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .fw-bold {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .btn-pink {
+        width: 120px;
+        height: 45px;
+        font-size: 16px;
+        border-radius: 5px;
+        text-align: center;
+        background-color: #ff6f91;
+        color: white;
+        border: none;
+        display: inline-block;
+    }
+
+        .btn-pink:hover {
+            background-color: #ff5777;
+        }
+
+    label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .form-control,
+    .form-select {
+        border-radius: 5px;
+        border: 1px solid #ffd1e1;
+    }
+
+        .form-control:focus,
+        .form-select:focus {
+            box-shadow: 0 0 5px #ff6f91;
+            border-color: #ff6f91;
+        }
+
+    .form-check-input {
+        accent-color: #ff6f91;
+    }
+
+    .text-danger {
+        color: #ff6f91 !important;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    hr {
+        border: 1px solid #ffd1e1;
+    }
+</style>
+
 <div class="@containerDivClass">
     <h1>@ViewData["Title"]</h1>
     <hr />
@@ -21,14 +96,14 @@
         @Html.AntiForgeryToken()
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="row mb-3">
-            <label asp-for="UserName" class="col-2 col-form-label fw-bold"></label>
+            <label asp-for="UserName" class="col-2 col-form-label fw-bold">User Name</label>
             <div class="col-10">
                 <input asp-for="Record.UserName" class="form-control" />
                 <span asp-validation-for="Record.UserName" class="text-danger"></span>
             </div>
         </div>
         <div class="row mb-3">
-            <label asp-for="Password" class="col-2 col-form-label fw-bold"></label>
+            <label asp-for="Password" class="col-2 col-form-label fw-bold">Password</label>
             <div class="col-10">
                 <input asp-for="Record.Password" class="form-control" type="password" />
                 <span asp-validation-for="Record.Password" class="text-danger"></span>
@@ -37,7 +112,7 @@
         <hr />
         <div class="row mb-3">
             <div class="offset-2 col-10">
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn-pink">Login</button>
             </div>
         </div>
     </form>
