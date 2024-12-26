@@ -129,7 +129,7 @@
                                 @Html.DisplayFor(modelItem => item.Password)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.IsActive)
+                                @(item.IsActive ? "Active" : "Inactive")
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.RoleName)

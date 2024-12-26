@@ -80,7 +80,7 @@ namespace BLL.Services
 
         public IQueryable<UsersModels> Query()
         {
-            return _db.Users.Where(u => u.IsActive).Include(u => u.Role).Select(u => new UsersModels { Record = u });
+            return _db.Users.Include(u => u.Role).Select(u => new UsersModels { Record = u });
         }
     }
 }

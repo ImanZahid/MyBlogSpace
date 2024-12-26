@@ -144,10 +144,11 @@
         <div class="row mb-3">
             <label asp-for="Content" class="col-2 col-form-label"></label>
             <div class="col-10">
-                <input asp-for="Record.Content" class="form-control" />
+                <textarea asp-for="Record.Content" class="form-control" rows="5"></textarea>
                 <span asp-validation-for="Record.Content" class="text-danger"></span>
             </div>
         </div>
+
 
         <div class="row mb-3">
             <label asp-for="Rating" class="col-2 col-form-label"></label>
@@ -165,6 +166,7 @@
                 <span asp-validation-for="Record.PublishDate" class="text-danger"></span>
             </div>
         </div>
+
 
         <div class="row mb-3">
             <label asp-for="UserName" class="col-2 col-form-label"></label>
@@ -195,3 +197,7 @@
         </div>
     </form>
 </div>
+
+@section Scripts {
+    <partial name="_DateTimePicker" />
+}

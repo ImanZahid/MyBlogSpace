@@ -17,7 +17,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         config.SlidingExpiration = true;
     });
 
-builder.Services.AddDbContext<DB>(options => options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=OnlineBlogsDB;Trusted_Connection=True;"));
+var connectionString = builder.Configuration.GetConnectionString("Db");
+builder.Services.AddDbContext<DB>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<IBlogService, BlogService>();
 builder.Services.AddScoped<IUsersService, UsersService>();

@@ -23,6 +23,8 @@ namespace BLL.Services
 
         public Service Create(Tag tag)
         {
+            if (_db.Tags.Any(u => u.Name.ToUpper() == tag.Name.Trim().ToUpper()))
+                return Error("Tag with same name already exists!");
             try
             {
                 _db.Tags.Add(tag);

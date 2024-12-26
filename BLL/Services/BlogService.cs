@@ -26,6 +26,12 @@ namespace BLL.Services
         // Create a new blog
         public Service Create(Blog blog)
         {
+            var rating = blog.Rating.Value;
+            if (rating < 0 || rating > 10)
+            {
+                return Error("Rating must be between 0 and 10 inclusive");
+            }
+
             try
             {
                 _db.Blogs.Add(blog);
@@ -45,6 +51,12 @@ namespace BLL.Services
             if (existingBlog == null)
             {
                 return Error("Blog not found.");
+            }
+            
+            var rating = blog.Rating.Value;
+            if (rating < 0 || rating > 10)
+            {
+                return Error("Rating must be between 0 and 10 inclusive");
             }
 
             try
